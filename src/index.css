@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* Clean Root Variables */
+:root {
+  --wa-primary: #00a884;
+  --wa-primary-dark: #008069;
+  --wa-secondary: #25d366;
+  --wa-bg-light: #f0f2f5;
+  --wa-chat-bg: #e5ddd5;
+  --wa-surface: #ffffff;
+  --wa-border: #e9edef;
+
+  --premium-gradient: linear-gradient(135deg, #00a884 0%, #128c7e 100%);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+
+  --text-main: #111b21;
+  --text-sub: #667781;
+  --text-muted: #8696a0;
+
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-urdu: 'Noto Nastaliq Urdu', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(circle at top right, #f8f9fa, #e9ecef);
+  color: var(--text-main);
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 480px;
+  background: var(--wa-surface);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+.urdu {
+  font-family: var(--font-urdu) !important;
+  direction: rtl;
+  line-height: 2 !important;
+}
+
+/* Glassmorphism Classes */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.premium-shadow {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Interactive Elements */
+button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+input,
+textarea {
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.chat-bubble-tail-right::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -8px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid white;
+  border-bottom: 10px solid transparent;
+}
